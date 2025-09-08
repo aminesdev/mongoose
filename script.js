@@ -7,13 +7,20 @@ mongoose
     .catch((err) => console.log("Connection error:", err));
 
 async function run() {
-    const newUser = new User({ name: "Amine", age: 20 });
-    await newUser.save();
-    console.log(newUser);
-    newUser.name = "Mohamed";
-    await newUser.save();
-    console.log(newUser)
-
+    try {
+        const newUser = new User({
+            name: "Amine",
+            age: 20,
+            hobbies: ["Weight Lifting", "Bowling"],
+            address: {
+                street: "Maint St",
+            },
+        });
+        await newUser.save();
+        console.log(newUser);
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 run();
