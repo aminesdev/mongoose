@@ -8,19 +8,12 @@ mongoose
 
 async function run() {
     try {
-        const newUser = new User({
-            name: "Amine",
-            age: 21,
-            email: "boughabaamine76@gmail.com",
-            hobbies: ["Weight Lifting", "Bowling"],
-            address: {
-                street: "Maint St",
-            },
-        });
-        await newUser.save();
-        console.log(newUser);
+        const users = await User.findById("68be8f2e7dd50d7344cd7eae").populate(
+            "bestFriend"
+        );
+        console.log(users);
     } catch (err) {
-        console.log(err)
+        console.log(err);
     }
 }
 

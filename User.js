@@ -13,10 +13,6 @@ const userSchema = new mongoose.Schema({
         type: Number,
         min: 1,
         max: 100,
-        validate: {
-            validator: (v) => v % v,
-            massage:props => `${props.value} is not an even number`
-        },
     },
     email: {
         type: String,
@@ -33,7 +29,10 @@ const userSchema = new mongoose.Schema({
         type: Date,
         default: () => Date.now(),
     },
-    bestFriend: mongoose.Schema.Types.ObjectId,
+    bestFriend: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+    },
     hobbies: [String],
     address: addressSchema,
 });
