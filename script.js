@@ -10,7 +10,8 @@ async function run() {
     try {
         const newUser = new User({
             name: "Amine",
-            age: 20,
+            age: 21,
+            email: "boughabaamine76@gmail.com",
             hobbies: ["Weight Lifting", "Bowling"],
             address: {
                 street: "Maint St",
