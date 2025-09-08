@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
     email: {
         type: String,
         minLength: 10,
-        required: true,
+        // required: true,
         lowercase: true,
     },
     createdAt: {
@@ -50,7 +50,17 @@ userSchema.query.byName = function (name) {
 };
 
 userSchema.virtual("namedEmail").get(function () {
-    return `${this.name} <${this.age}>`
-})
+    return `${this.name} <${this.age}>`;
+});
+
+userSchema.pre("save", function (next) {
+    this.updatedAt = Date.now();
+    next();
+});
+
+userSchema.post("save", function (next) {
+    this.sayHi();
+    next();
+});
 
 export const User = mongoose.model("User", userSchema);

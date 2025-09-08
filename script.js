@@ -9,7 +9,9 @@ mongoose
 async function run() {
     try {
         const user = await User.findOne({ name: "Amine" });
-        console.log(user.namedEmail);
+        console.log(user);
+        await user.save();
+        console.log(user);
     } catch (err) {
         console.log(err);
     }
