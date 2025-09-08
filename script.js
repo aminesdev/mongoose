@@ -8,10 +8,8 @@ mongoose
 
 async function run() {
     try {
-        const users = await User.findById("68be8f2e7dd50d7344cd7eae").populate(
-            "bestFriend"
-        );
-        console.log(users);
+        const user = await User.findOne({ name: "Amine" });
+        console.log(user.namedEmail);
     } catch (err) {
         console.log(err);
     }
